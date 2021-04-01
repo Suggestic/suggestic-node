@@ -1,6 +1,6 @@
-# Sugegstic Node Package
+# Suggestic Node Package
 
-Documentation for the Sugegstic API can be found [here](https://docs.suggestic.com/graphql/)
+Documentation for the Suggestic API can be found [here](https://docs.suggestic.com/graphql/)
 
 
 1.- Install suggestic node client
