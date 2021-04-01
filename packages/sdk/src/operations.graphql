@@ -1,0 +1,149 @@
+fragment GenerateMealPlan on GenerateMealPlan {
+  message
+  success
+}
+
+fragment ProfileMealPlanSettings on ProfileMealPlanSettings {
+  success
+}
+
+fragment Meal on Meal {
+  calories
+  id
+  maxNumOfServings
+  meal
+  numOfServings
+  recipe {
+    id
+  }
+}
+
+fragment MealPlanDay on MealPlanDay {
+  calories
+  date
+  day
+  meals {
+    ...Meal
+  }
+}
+
+fragment PageInfo on PageInfo {
+  endCursor
+  hasNextPage
+  hasPreviousPage
+  startCursor
+}
+
+mutation generateMealPlan(
+  $addDays: Boolean
+  $breakfastDistribution: Float
+  $dinnerDistribution: Float
+  $ignoreLock: Boolean
+  $isCache: Boolean
+  $kcalLimit: Float
+  $lunchDistribution: Float
+  $maxNumOfServings: Int
+  $maxServingWeight: Int
+  $minServingWeight: Int
+  $repeat: DateTime
+  $snackDistribution: Float
+) {
+  generateMealPlan(
+    addDays: $addDays
+    breakfastDistribution: $breakfastDistribution
+    dinnerDistribution: $dinnerDistribution
+    ignoreLock: $ignoreLock
+    isCache: $isCache
+    kcalLimit: $kcalLimit
+    lunchDistribution: $lunchDistribution
+    maxNumOfServings: $maxNumOfServings
+    maxServingWeight: $maxServingWeight
+    minServingWeight: $minServingWeight
+    repeat: $repeat
+    snackDistribution: $snackDistribution
+  ) {
+    ...GenerateMealPlan
+  }
+}
+
+mutation profileMealPlanSettings(
+  $calories: Int!
+  $carbsPerc: Float!
+  $error: Float!
+  $fatPerc: Float!
+  $format: [MealTime]
+  $omega3Perc: Float
+  $proteinPerc: Float!
+) {
+  profileMealPlanSettings(
+    calories: $calories
+    carbsPerc: $carbsPerc
+    error: $error
+    fatPerc: $fatPerc
+    format: $format
+    omega3Perc: $omega3Perc
+    proteinPerc: $proteinPerc
+  ) {
+    ...ProfileMealPlanSettings
+  }
+}
+
+query mealPlan($fromDate: Date) {
+  mealPlan(fromDate: $fromDate) {
+    ...MealPlanDay
+  }
+}
+
+fragment RecipeConnection on RecipeConnection {
+  pageInfo {
+    ...PageInfo
+  }
+}
+
+query recipeSearch(
+  $after: String
+  $before: String
+  $cuisines: [String]
+  $dietaryTag: DietaryTag
+  $first: Int
+  $hasImage: Boolean
+  $hasInstructions: Boolean
+  $ingredients: [String]
+  $isPremium: Boolean
+  $last: Int
+  $macroNutrientsRange: MacroNutrientsRangeInput
+  $maxPrepTime: Int
+  $mealTime: RecipeMealTime
+  $meals: [String]
+  $numberOfIngredients: Int
+  $program: String
+  $query: String
+  $skillLevel: SkillLevel
+  $tags: [String]
+  $totalTime: Float
+) {
+  recipeSearch(
+    after: $after
+    before: $before
+    cuisines: $cuisines
+    dietaryTag: $dietaryTag
+    first: $first
+    hasImage: $hasImage
+    hasInstructions: $hasInstructions
+    ingredients: $ingredients
+    isPremium: $isPremium
+    last: $last
+    macroNutrientsRange: $macroNutrientsRange
+    maxPrepTime: $maxPrepTime
+    mealTime: $mealTime
+    meals: $meals
+    numberOfIngredients: $numberOfIngredients
+    program: $program
+    query: $query
+    skillLevel: $skillLevel
+    tags: $tags
+    totalTime: $totalTime
+  ) {
+    ...RecipeConnection
+  }
+}

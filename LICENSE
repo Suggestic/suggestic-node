@@ -1,0 +1,33 @@
+© 2021 Suggestic, Inc. All rights reserved.
+
+Suggestic Open SDK License
+
+BY ACCESSING, DOWNLOADING, INSTALLING OR USING THE SUGGESTIC SOFTWARE DEVELOPMENT KIT
+(“SDK”), YOU EXPRESSLY AGREE TO AND CONSENT TO BE BOUND BY THE TERMS OF THIS LICENSE
+AGREEMENT (“AGREEMENT”).  IF YOU DO NOT AGREE TO ALL OF THE TERMS OF THIS AGREEMENT, DO
+NOT ACCESS, DOWNLOAD, INSTALL OR OTHERWISE USE ANY PART OF THIS SDK.  IF YOU ARE EMPLOYED
+AND WILL ACCESS, DOWNLOAD, INSTALL, OR USE THE SDK IN PERFORAMNACE OF YOUR EMPLOYMENT
+OR SPONSORSHIP BY ANOTHER ENTITY, YOU REPRESENT THAT SUCH ENTITY AGREES AND CONSENTS TO
+THE TERMS OF THIS AGREEMENT.
+
+Subject to compliance with this Agreement, you may copy, distribute, publish, perform, and display the
+SDK in modified or unmodified form solely to develop an application that is compatible with
+the Suggestic platform for which the SDK has been released to you under this Agreement by Suggestic and
+branded under a mark owned or controlled by Suggestic (the “Suggestic Platform”).  You agree that you
+may not exercise any of the foregoing rights to develop, distribute or otherwise promote an application
+that is incompatible with the Suggestic Platform or which is designed for use without the Suggestic
+Platform. 
+
+The grant of the foregoing rights is conditioned upon you retaining the above copyright notice and this
+Agreement in all copies of the SDK source code.
+
+THIS SDK IS PROVIDED "AS IS," AND NEITHER SUGGESTIC NOR ITS LICENSORS
+MAKE ANY REPRESENTATIONS OR WARRANTIES, EXPRESS OR IMPLIED,
+INCLUDING, BUT NOT LIMITED TO, WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT, OR TITLE THAT THE SDK IS
+SUITABLE FOR ANY PURPOSE; NOR THAT USE WILL NOT INFRINGE ANY THIRD
+PARTY PATENTS, COPYRIGHTS, TRADEMARKS OR OTHER RIGHTS.
+
+NEITHER SUGGESTIC NOR ITS LICENSORS WILL BE LIABLE FOR ANY DIRECT,
+INDIRECT, SPECIAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF ANY
+EXERCISE OF RIGHTS UNDER THIS AGREEMENT.

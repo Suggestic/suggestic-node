@@ -1,0 +1,15 @@
+overwrite: true
+schema: https://production.suggestic.com/graphql
+hooks:
+  afterOneFileWrite:
+    - prettier --write
+generates:
+  src/schema.json:
+    plugins:
+      - introspection
+  src/schema.graphql:
+    plugins:
+      - schema-ast
+    config:
+      includeDirectives: true
+      sort: true

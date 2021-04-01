@@ -1,0 +1,9 @@
+overwrite: true
+schema: "https://production.suggestic.com/graphql"
+documents: "./src/**/*.graphql"
+generates:
+  src/__generated_sdk.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-graphql-request

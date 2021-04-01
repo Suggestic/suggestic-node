@@ -1,0 +1,32 @@
+# Sugegstic Node Package
+
+Documentation for the Sugegstic API can be found [here](https://docs.suggestic.com/graphql/)
+
+
+1.- Install suggestic node client
+```.bash
+yarn add @suggestic/sdk
+```
+
+2.- Create suggestic client
+```.js
+import { Suggestic } from "@suggestic/sdk";
+
+const client = new Suggestic("{TOKEN}", "{USER-ID}");
+```
+
+3.- Get a meal plan
+```.js
+async function getMealplan() {
+  const mealplan = await client.mealPlan();
+  console.log(mealplan);
+}
+
+getMealplan();
+```
+
+### Development
+
+Suggestic Node client uses [graphjql-code-generator](https://www.graphql-code-generator.com/)
+
+- [sdk](https://github.com/suggestic/suggestic/tree/master/packages/sdk/README.md)
