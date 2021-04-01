@@ -1,6 +1,6 @@
-# Sugegstic Node Package
+# Suggestic Node Package
 
-Documentation for the Sugegstic API can be found [here](https://docs.suggestic.com/graphql/)
+Documentation for the Suggestic API can be found [here](https://docs.suggestic.com/graphql/)
 
 
 1.- Install suggestic node client
@@ -12,13 +12,14 @@ yarn add @suggestic/sdk
 ```.js
 import { Suggestic } from "@suggestic/sdk";
 
-const client = new Suggestic("{TOKEN}", "{USER-ID}");
+const client = new Suggestic("{TOKEN}");
 ```
 
 3.- Get a meal plan
 ```.js
 async function getMealplan() {
-  const mealplan = await client.mealPlan();
+  const user = client.getUser("{USER-ID}");
+  const mealplan = await user.mealPlan();
   console.log(mealplan);
 }
 
