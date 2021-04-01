@@ -2,17 +2,17 @@ import { GraphQLClient } from 'graphql-request';
 import { getSdk, Sdk } from './__generated_sdk';
 
 class ClientSuggestic extends GraphQLClient {
-  private token: string
-  private sourceURL: string
+  private token: string;
 
-  constructor(token: string, user?: string, url?: string) {
-    url = url || 'https://production.suggestic.com/graphql'; 
+  private sourceURL: string;
+
+  constructor(token: string, user?: string, url = 'https://production.suggestic.com/graphql') {
     const options = {
       headers: {
         Authorization: `Token ${token}`,
       },
     };
-    if (!!user) {
+    if (user) {
       options.headers['SG-User'] = user;
     }
 
