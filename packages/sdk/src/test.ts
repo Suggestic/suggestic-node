@@ -1,10 +1,11 @@
 import { Suggestic } from '.';
 
-const client = new Suggestic('{TOKEN}', '{USER_ID}');
+const client = new Suggestic('{TOKEN}');
 
 async function getMealplan() {
-  // const mealplan = await client.mealPlan();
-  const mealplan = await client.generateMealPlan();
+  const user = client.getUser('{USER_ID}')
+  await user.generateMealPlan();
+  const mealplan = await user.mealPlan();
   console.info(mealplan);
 }
 
