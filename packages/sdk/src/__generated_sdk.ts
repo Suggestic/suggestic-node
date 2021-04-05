@@ -3264,6 +3264,90 @@ export type PageInfoFragment = (
   & Pick<PageInfo, 'endCursor' | 'hasNextPage' | 'hasPreviousPage' | 'startCursor'>
 );
 
+export type UserFragment = (
+  { __typename?: 'User' }
+  & Pick<User, 'email' | 'id' | 'isActive' | 'name' | 'phone'>
+);
+
+export type CreateUserFragment = (
+  { __typename?: 'CreateUser' }
+  & Pick<CreateUser, 'message' | 'success'>
+  & { user?: Maybe<(
+    { __typename?: 'User' }
+    & UserFragment
+  )> }
+);
+
+export type SubscriptionTypeFragment = (
+  { __typename?: 'SubscriptionType' }
+  & Pick<SubscriptionType, 'appleId' | 'createdAt' | 'databaseId' | 'googleplaySku' | 'id' | 'isActive' | 'isRecurring' | 'name' | 'periodPrice' | 'permissions' | 'recipesBaseQuery' | 'stripeProductId' | 'totalPrice' | 'trialPeriodDays' | 'updatedAt'>
+);
+
+export type RestrictionFragment = (
+  { __typename?: 'Restriction' }
+  & Pick<Restriction, 'databaseId' | 'id' | 'isOnProgram' | 'name' | 'slugname' | 'subcategory'>
+);
+
+export type ProfileTypeFragment = (
+  { __typename?: 'ProfileType' }
+  & Pick<ProfileType, 'age' | 'birthdate' | 'createdAt' | 'customAttributes' | 'extraData' | 'gender' | 'goalsOn' | 'hasNotifications' | 'hasOnboarded' | 'height' | 'id' | 'isImperial' | 'mpCalories' | 'mpCarbsPerc' | 'mpDays' | 'mpError' | 'mpFatPerc' | 'mpFormat' | 'mpMonounsaturatedFatPerc' | 'mpOmega3Perc' | 'mpPolyunsaturatedFatPerc' | 'mpProteinPerc' | 'mpSaturatedFatPerc' | 'mpTransFatPerc' | 'needsNewPassword' | 'startingWeight' | 'targetWeight' | 'timezone' | 'updatedAt' | 'userId'>
+  & { program?: Maybe<(
+    { __typename?: 'Program' }
+    & Pick<Program, 'id'>
+  )>, restrictions?: Maybe<Array<Maybe<(
+    { __typename?: 'Restriction' }
+    & RestrictionFragment
+  )>>>, subscription?: Maybe<(
+    { __typename?: 'SubscriptionType' }
+    & SubscriptionTypeFragment
+  )> }
+);
+
+export type RecipeConnectionFragment = (
+  { __typename?: 'RecipeConnection' }
+  & { pageInfo: (
+    { __typename?: 'PageInfo' }
+    & PageInfoFragment
+  ) }
+);
+
+export type ProgramConnectionFragment = (
+  { __typename?: 'ProgramConnection' }
+  & { pageInfo: (
+    { __typename?: 'PageInfo' }
+    & PageInfoFragment
+  ) }
+);
+
+export type ProgramFragment = (
+  { __typename?: 'Program' }
+  & Pick<Program, 'author' | 'authorAvatar' | 'authors' | 'backgroundImage' | 'books' | 'comment' | 'cover' | 'databaseId' | 'decreaseDelta' | 'defaultVideoThumnail' | 'descriptionLong' | 'descriptionShort' | 'id' | 'image' | 'increaseDelta' | 'isActive' | 'lowerBound' | 'name' | 'normalizingTemperature' | 'order' | 'restrictions' | 'slug' | 'tags' | 'upperBound'>
+);
+
+export type GenerateSimpleMealPlanFragment = (
+  { __typename?: 'GenerateSimpleMealPlan' }
+  & Pick<GenerateSimpleMealPlan, 'message' | 'success'>
+);
+
+export type CreateUserMutationVariables = Exact<{
+  email?: Maybe<Scalars['String']>;
+  emailPasswordNotification?: Maybe<Scalars['Boolean']>;
+  extraData?: Maybe<Scalars['JSONString']>;
+  name?: Maybe<Scalars['String']>;
+  phone?: Maybe<Scalars['String']>;
+  program?: Maybe<Scalars['String']>;
+  restrictions?: Maybe<Array<Maybe<Scalars['String']>> | Maybe<Scalars['String']>>;
+}>;
+
+
+export type CreateUserMutation = (
+  { __typename?: 'Mutation' }
+  & { createUser?: Maybe<(
+    { __typename?: 'CreateUser' }
+    & CreateUserFragment
+  )> }
+);
+
 export type GenerateMealPlanMutationVariables = Exact<{
   addDays?: Maybe<Scalars['Boolean']>;
   breakfastDistribution?: Maybe<Scalars['Float']>;
@@ -3288,6 +3372,21 @@ export type GenerateMealPlanMutation = (
   )> }
 );
 
+export type GenerateSimpleMealPlanMutationVariables = Exact<{
+  addDays?: Maybe<Scalars['Boolean']>;
+  ignoreLock?: Maybe<Scalars['Boolean']>;
+  repeat?: Maybe<Scalars['DateTime']>;
+}>;
+
+
+export type GenerateSimpleMealPlanMutation = (
+  { __typename?: 'Mutation' }
+  & { generateSimpleMealPlan?: Maybe<(
+    { __typename?: 'GenerateSimpleMealPlan' }
+    & GenerateSimpleMealPlanFragment
+  )> }
+);
+
 export type ProfileMealPlanSettingsMutationVariables = Exact<{
   calories: Scalars['Int'];
   carbsPerc: Scalars['Float'];
@@ -3307,25 +3406,17 @@ export type ProfileMealPlanSettingsMutation = (
   )> }
 );
 
-export type MealPlanQueryVariables = Exact<{
-  fromDate?: Maybe<Scalars['Date']>;
+export type SearchProfileQueryVariables = Exact<{
+  email: Scalars['String'];
 }>;
 
 
-export type MealPlanQuery = (
+export type SearchProfileQuery = (
   { __typename?: 'Query' }
-  & { mealPlan?: Maybe<Array<Maybe<(
-    { __typename?: 'MealPlanDay' }
-    & MealPlanDayFragment
-  )>>> }
-);
-
-export type RecipeConnectionFragment = (
-  { __typename?: 'RecipeConnection' }
-  & { pageInfo: (
-    { __typename?: 'PageInfo' }
-    & PageInfoFragment
-  ) }
+  & { searchProfile?: Maybe<(
+    { __typename?: 'ProfileType' }
+    & ProfileTypeFragment
+  )> }
 );
 
 export type RecipeSearchQueryVariables = Exact<{
@@ -3357,6 +3448,74 @@ export type RecipeSearchQuery = (
   & { recipeSearch?: Maybe<(
     { __typename?: 'RecipeConnection' }
     & RecipeConnectionFragment
+  )> }
+);
+
+export type MealPlanQueryVariables = Exact<{
+  fromDate?: Maybe<Scalars['Date']>;
+}>;
+
+
+export type MealPlanQuery = (
+  { __typename?: 'Query' }
+  & { mealPlan?: Maybe<Array<Maybe<(
+    { __typename?: 'MealPlanDay' }
+    & MealPlanDayFragment
+  )>>> }
+);
+
+export type CustomMealPlanQueryVariables = Exact<{
+  breakfastDistribution?: Maybe<Scalars['Float']>;
+  calories?: Maybe<Scalars['Int']>;
+  carbs?: Maybe<Scalars['Float']>;
+  days?: Maybe<Scalars['Int']>;
+  dinnerDistribution?: Maybe<Scalars['Float']>;
+  error?: Maybe<Scalars['Float']>;
+  fat?: Maybe<Scalars['Float']>;
+  format: Array<Maybe<MealTime>> | Maybe<MealTime>;
+  lunchDistribution?: Maybe<Scalars['Float']>;
+  omega3?: Maybe<Scalars['Float']>;
+  protein?: Maybe<Scalars['Float']>;
+  snackDistribution?: Maybe<Scalars['Float']>;
+}>;
+
+
+export type CustomMealPlanQuery = (
+  { __typename?: 'Query' }
+  & { customMealPlan?: Maybe<Array<Maybe<(
+    { __typename?: 'MealPlanDay' }
+    & MealPlanDayFragment
+  )>>> }
+);
+
+export type ProgramsQueryVariables = Exact<{
+  after?: Maybe<Scalars['String']>;
+  before?: Maybe<Scalars['String']>;
+  first?: Maybe<Scalars['Int']>;
+  isActive?: Maybe<Scalars['Boolean']>;
+  isPremium?: Maybe<Scalars['Boolean']>;
+  last?: Maybe<Scalars['Int']>;
+}>;
+
+
+export type ProgramsQuery = (
+  { __typename?: 'Query' }
+  & { programs?: Maybe<(
+    { __typename?: 'ProgramConnection' }
+    & ProgramConnectionFragment
+  )> }
+);
+
+export type ProgramQueryVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+
+export type ProgramQuery = (
+  { __typename?: 'Query' }
+  & { program?: Maybe<(
+    { __typename?: 'Program' }
+    & ProgramFragment
   )> }
 );
 
@@ -3393,6 +3552,97 @@ export const MealPlanDayFragmentDoc = gql`
   }
 }
     ${MealFragmentDoc}`;
+export const UserFragmentDoc = gql`
+    fragment User on User {
+  email
+  id
+  isActive
+  name
+  phone
+}
+    `;
+export const CreateUserFragmentDoc = gql`
+    fragment CreateUser on CreateUser {
+  message
+  success
+  user {
+    ...User
+  }
+}
+    ${UserFragmentDoc}`;
+export const RestrictionFragmentDoc = gql`
+    fragment Restriction on Restriction {
+  databaseId
+  id
+  isOnProgram
+  name
+  slugname
+  subcategory
+}
+    `;
+export const SubscriptionTypeFragmentDoc = gql`
+    fragment SubscriptionType on SubscriptionType {
+  appleId
+  createdAt
+  databaseId
+  googleplaySku
+  id
+  isActive
+  isRecurring
+  name
+  periodPrice
+  permissions
+  recipesBaseQuery
+  stripeProductId
+  totalPrice
+  trialPeriodDays
+  updatedAt
+}
+    `;
+export const ProfileTypeFragmentDoc = gql`
+    fragment ProfileType on ProfileType {
+  age
+  birthdate
+  createdAt
+  customAttributes
+  extraData
+  gender
+  goalsOn
+  hasNotifications
+  hasOnboarded
+  height
+  id
+  isImperial
+  mpCalories
+  mpCarbsPerc
+  mpDays
+  mpError
+  mpFatPerc
+  mpFormat
+  mpMonounsaturatedFatPerc
+  mpOmega3Perc
+  mpPolyunsaturatedFatPerc
+  mpProteinPerc
+  mpSaturatedFatPerc
+  mpTransFatPerc
+  needsNewPassword
+  program {
+    id
+  }
+  restrictions {
+    ...Restriction
+  }
+  startingWeight
+  subscription {
+    ...SubscriptionType
+  }
+  targetWeight
+  timezone
+  updatedAt
+  userId
+}
+    ${RestrictionFragmentDoc}
+${SubscriptionTypeFragmentDoc}`;
 export const PageInfoFragmentDoc = gql`
     fragment PageInfo on PageInfo {
   endCursor
@@ -3408,6 +3658,62 @@ export const RecipeConnectionFragmentDoc = gql`
   }
 }
     ${PageInfoFragmentDoc}`;
+export const ProgramConnectionFragmentDoc = gql`
+    fragment ProgramConnection on ProgramConnection {
+  pageInfo {
+    ...PageInfo
+  }
+}
+    ${PageInfoFragmentDoc}`;
+export const ProgramFragmentDoc = gql`
+    fragment Program on Program {
+  author
+  authorAvatar
+  authors
+  backgroundImage
+  books
+  comment
+  cover
+  databaseId
+  decreaseDelta
+  defaultVideoThumnail
+  descriptionLong
+  descriptionShort
+  id
+  image
+  increaseDelta
+  isActive
+  lowerBound
+  name
+  normalizingTemperature
+  order
+  restrictions
+  slug
+  tags
+  upperBound
+}
+    `;
+export const GenerateSimpleMealPlanFragmentDoc = gql`
+    fragment GenerateSimpleMealPlan on GenerateSimpleMealPlan {
+  message
+  success
+}
+    `;
+export const CreateUserDocument = gql`
+    mutation createUser($email: String, $emailPasswordNotification: Boolean, $extraData: JSONString, $name: String, $phone: String, $program: String, $restrictions: [String]) {
+  createUser(
+    email: $email
+    emailPasswordNotification: $emailPasswordNotification
+    extraData: $extraData
+    name: $name
+    phone: $phone
+    program: $program
+    restrictions: $restrictions
+  ) {
+    ...CreateUser
+  }
+}
+    ${CreateUserFragmentDoc}`;
 export const GenerateMealPlanDocument = gql`
     mutation generateMealPlan($addDays: Boolean, $breakfastDistribution: Float, $dinnerDistribution: Float, $ignoreLock: Boolean, $isCache: Boolean, $kcalLimit: Float, $lunchDistribution: Float, $maxNumOfServings: Int, $maxServingWeight: Int, $minServingWeight: Int, $repeat: DateTime, $snackDistribution: Float) {
   generateMealPlan(
@@ -3428,6 +3734,17 @@ export const GenerateMealPlanDocument = gql`
   }
 }
     ${GenerateMealPlanFragmentDoc}`;
+export const GenerateSimpleMealPlanDocument = gql`
+    mutation generateSimpleMealPlan($addDays: Boolean, $ignoreLock: Boolean, $repeat: DateTime) {
+  generateSimpleMealPlan(
+    addDays: $addDays
+    ignoreLock: $ignoreLock
+    repeat: $repeat
+  ) {
+    ...GenerateSimpleMealPlan
+  }
+}
+    ${GenerateSimpleMealPlanFragmentDoc}`;
 export const ProfileMealPlanSettingsDocument = gql`
     mutation profileMealPlanSettings($calories: Int!, $carbsPerc: Float!, $error: Float!, $fatPerc: Float!, $format: [MealTime], $omega3Perc: Float, $proteinPerc: Float!) {
   profileMealPlanSettings(
@@ -3443,13 +3760,13 @@ export const ProfileMealPlanSettingsDocument = gql`
   }
 }
     ${ProfileMealPlanSettingsFragmentDoc}`;
-export const MealPlanDocument = gql`
-    query mealPlan($fromDate: Date) {
-  mealPlan(fromDate: $fromDate) {
-    ...MealPlanDay
+export const SearchProfileDocument = gql`
+    query searchProfile($email: String!) {
+  searchProfile(email: $email) {
+    ...ProfileType
   }
 }
-    ${MealPlanDayFragmentDoc}`;
+    ${ProfileTypeFragmentDoc}`;
 export const RecipeSearchDocument = gql`
     query recipeSearch($after: String, $before: String, $cuisines: [String], $dietaryTag: DietaryTag, $first: Int, $hasImage: Boolean, $hasInstructions: Boolean, $ingredients: [String], $isPremium: Boolean, $last: Int, $macroNutrientsRange: MacroNutrientsRangeInput, $maxPrepTime: Int, $mealTime: RecipeMealTime, $meals: [String], $numberOfIngredients: Int, $program: String, $query: String, $skillLevel: SkillLevel, $tags: [String], $totalTime: Float) {
   recipeSearch(
@@ -3478,6 +3795,54 @@ export const RecipeSearchDocument = gql`
   }
 }
     ${RecipeConnectionFragmentDoc}`;
+export const MealPlanDocument = gql`
+    query mealPlan($fromDate: Date) {
+  mealPlan(fromDate: $fromDate) {
+    ...MealPlanDay
+  }
+}
+    ${MealPlanDayFragmentDoc}`;
+export const CustomMealPlanDocument = gql`
+    query customMealPlan($breakfastDistribution: Float, $calories: Int, $carbs: Float, $days: Int, $dinnerDistribution: Float, $error: Float, $fat: Float, $format: [MealTime]!, $lunchDistribution: Float, $omega3: Float, $protein: Float, $snackDistribution: Float) {
+  customMealPlan(
+    breakfastDistribution: $breakfastDistribution
+    calories: $calories
+    carbs: $carbs
+    days: $days
+    dinnerDistribution: $dinnerDistribution
+    error: $error
+    fat: $fat
+    format: $format
+    lunchDistribution: $lunchDistribution
+    omega3: $omega3
+    protein: $protein
+    snackDistribution: $snackDistribution
+  ) {
+    ...MealPlanDay
+  }
+}
+    ${MealPlanDayFragmentDoc}`;
+export const ProgramsDocument = gql`
+    query programs($after: String, $before: String, $first: Int, $isActive: Boolean, $isPremium: Boolean, $last: Int) {
+  programs(
+    after: $after
+    before: $before
+    first: $first
+    isActive: $isActive
+    isPremium: $isPremium
+    last: $last
+  ) {
+    ...ProgramConnection
+  }
+}
+    ${ProgramConnectionFragmentDoc}`;
+export const ProgramDocument = gql`
+    query program($id: ID!) {
+  program(id: $id) {
+    ...Program
+  }
+}
+    ${ProgramFragmentDoc}`;
 
 export type SdkFunctionWrapper = <T>(action: () => Promise<T>) => Promise<T>;
 
@@ -3485,17 +3850,35 @@ export type SdkFunctionWrapper = <T>(action: () => Promise<T>) => Promise<T>;
 const defaultWrapper: SdkFunctionWrapper = sdkFunction => sdkFunction();
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
+    createUser(variables?: CreateUserMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<CreateUserMutation> {
+      return withWrapper(() => client.request<CreateUserMutation>(CreateUserDocument, variables, requestHeaders));
+    },
     generateMealPlan(variables?: GenerateMealPlanMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GenerateMealPlanMutation> {
       return withWrapper(() => client.request<GenerateMealPlanMutation>(GenerateMealPlanDocument, variables, requestHeaders));
+    },
+    generateSimpleMealPlan(variables?: GenerateSimpleMealPlanMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<GenerateSimpleMealPlanMutation> {
+      return withWrapper(() => client.request<GenerateSimpleMealPlanMutation>(GenerateSimpleMealPlanDocument, variables, requestHeaders));
     },
     profileMealPlanSettings(variables: ProfileMealPlanSettingsMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<ProfileMealPlanSettingsMutation> {
       return withWrapper(() => client.request<ProfileMealPlanSettingsMutation>(ProfileMealPlanSettingsDocument, variables, requestHeaders));
     },
-    mealPlan(variables?: MealPlanQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<MealPlanQuery> {
-      return withWrapper(() => client.request<MealPlanQuery>(MealPlanDocument, variables, requestHeaders));
+    searchProfile(variables: SearchProfileQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<SearchProfileQuery> {
+      return withWrapper(() => client.request<SearchProfileQuery>(SearchProfileDocument, variables, requestHeaders));
     },
     recipeSearch(variables?: RecipeSearchQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<RecipeSearchQuery> {
       return withWrapper(() => client.request<RecipeSearchQuery>(RecipeSearchDocument, variables, requestHeaders));
+    },
+    mealPlan(variables?: MealPlanQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<MealPlanQuery> {
+      return withWrapper(() => client.request<MealPlanQuery>(MealPlanDocument, variables, requestHeaders));
+    },
+    customMealPlan(variables: CustomMealPlanQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<CustomMealPlanQuery> {
+      return withWrapper(() => client.request<CustomMealPlanQuery>(CustomMealPlanDocument, variables, requestHeaders));
+    },
+    programs(variables?: ProgramsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<ProgramsQuery> {
+      return withWrapper(() => client.request<ProgramsQuery>(ProgramsDocument, variables, requestHeaders));
+    },
+    program(variables: ProgramQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<ProgramQuery> {
+      return withWrapper(() => client.request<ProgramQuery>(ProgramDocument, variables, requestHeaders));
     }
   };
 }

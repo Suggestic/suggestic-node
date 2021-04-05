@@ -1,0 +1,81 @@
+mutation createUser(
+  $email: String
+  $emailPasswordNotification: Boolean
+  $extraData: JSONString
+  $name: String
+  $phone: String
+  $program: String
+  $restrictions: [String]
+) {
+  createUser(
+    email: $email
+    emailPasswordNotification: $emailPasswordNotification
+    extraData: $extraData
+    name: $name
+    phone: $phone
+    program: $program
+    restrictions: $restrictions
+  ) {
+    ...CreateUser
+  }
+}
+
+mutation generateMealPlan(
+  $addDays: Boolean
+  $breakfastDistribution: Float
+  $dinnerDistribution: Float
+  $ignoreLock: Boolean
+  $isCache: Boolean
+  $kcalLimit: Float
+  $lunchDistribution: Float
+  $maxNumOfServings: Int
+  $maxServingWeight: Int
+  $minServingWeight: Int
+  $repeat: DateTime
+  $snackDistribution: Float
+) {
+  generateMealPlan(
+    addDays: $addDays
+    breakfastDistribution: $breakfastDistribution
+    dinnerDistribution: $dinnerDistribution
+    ignoreLock: $ignoreLock
+    isCache: $isCache
+    kcalLimit: $kcalLimit
+    lunchDistribution: $lunchDistribution
+    maxNumOfServings: $maxNumOfServings
+    maxServingWeight: $maxServingWeight
+    minServingWeight: $minServingWeight
+    repeat: $repeat
+    snackDistribution: $snackDistribution
+  ) {
+    ...GenerateMealPlan
+  }
+}
+
+mutation generateSimpleMealPlan($addDays: Boolean, $ignoreLock: Boolean, $repeat: DateTime) {
+  generateSimpleMealPlan(addDays: $addDays, ignoreLock: $ignoreLock, repeat: $repeat) {
+    ...GenerateSimpleMealPlan
+  }
+}
+
+mutation profileMealPlanSettings(
+  $calories: Int!
+  $carbsPerc: Float!
+  $error: Float!
+  $fatPerc: Float!
+  $format: [MealTime]
+  $omega3Perc: Float
+  $proteinPerc: Float!
+) {
+  profileMealPlanSettings(
+    calories: $calories
+    carbsPerc: $carbsPerc
+    error: $error
+    fatPerc: $fatPerc
+    format: $format
+    omega3Perc: $omega3Perc
+    proteinPerc: $proteinPerc
+  ) {
+    ...ProfileMealPlanSettings
+  }
+}

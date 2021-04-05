@@ -1,0 +1,164 @@
+fragment GenerateMealPlan on GenerateMealPlan {
+  message
+  success
+}
+
+fragment ProfileMealPlanSettings on ProfileMealPlanSettings {
+  success
+}
+
+fragment Meal on Meal {
+  calories
+  id
+  maxNumOfServings
+  meal
+  numOfServings
+  recipe {
+    id
+  }
+}
+
+fragment MealPlanDay on MealPlanDay {
+  calories
+  date
+  day
+  meals {
+    ...Meal
+  }
+}
+
+fragment PageInfo on PageInfo {
+  endCursor
+  hasNextPage
+  hasPreviousPage
+  startCursor
+}
+
+fragment User on User {
+  email
+  id
+  isActive
+  name
+  phone
+}
+
+fragment CreateUser on CreateUser {
+  message
+  success
+  user {
+    ...User
+  }
+}
+
+fragment SubscriptionType on SubscriptionType {
+  appleId
+  createdAt
+  databaseId
+  googleplaySku
+  id
+  isActive
+  isRecurring
+  name
+  periodPrice
+  permissions
+  recipesBaseQuery
+  stripeProductId
+  totalPrice
+  trialPeriodDays
+  updatedAt
+}
+
+fragment Restriction on Restriction {
+  databaseId
+  id
+  isOnProgram
+  name
+  slugname
+  subcategory
+}
+
+fragment ProfileType on ProfileType {
+  age
+  birthdate
+  createdAt
+  customAttributes
+  extraData
+  gender
+  goalsOn
+  hasNotifications
+  hasOnboarded
+  height
+  id
+  isImperial
+  mpCalories
+  mpCarbsPerc
+  mpDays
+  mpError
+  mpFatPerc
+  mpFormat
+  mpMonounsaturatedFatPerc
+  mpOmega3Perc
+  mpPolyunsaturatedFatPerc
+  mpProteinPerc
+  mpSaturatedFatPerc
+  mpTransFatPerc
+  needsNewPassword
+  program {
+    id
+  }
+  restrictions {
+    ...Restriction
+  }
+  startingWeight
+  subscription {
+    ...SubscriptionType
+  }
+  targetWeight
+  timezone
+  updatedAt
+  userId
+}
+
+fragment RecipeConnection on RecipeConnection {
+  pageInfo {
+    ...PageInfo
+  }
+}
+
+fragment ProgramConnection on ProgramConnection {
+  pageInfo {
+    ...PageInfo
+  }
+}
+
+fragment Program on Program {
+  author
+  authorAvatar
+  authors
+  backgroundImage
+  books
+  comment
+  cover
+  databaseId
+  decreaseDelta
+  defaultVideoThumnail
+  descriptionLong
+  descriptionShort
+  id
+  image
+  increaseDelta
+  isActive
+  lowerBound
+  name
+  normalizingTemperature
+  order
+  restrictions
+  slug
+  tags
+  upperBound
+}
+
+fragment GenerateSimpleMealPlan on GenerateSimpleMealPlan {
+  message
+  success
+}

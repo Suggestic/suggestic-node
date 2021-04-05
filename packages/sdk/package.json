@@ -6,7 +6,7 @@
   "license": "SEE LICENSE IN LICENSE",
   "scripts": {
     "runcodegen": "graphql-codegen --config codegen.sdk.yml",
-    "test": "ts-node test.ts",
+    "test": "ts-node src/test.ts",
     "lint": "eslint . --ext .ts",
     "build": "tsc -p ."
   },
