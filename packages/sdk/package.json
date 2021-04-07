@@ -1,6 +1,6 @@
 {
   "name": "@suggestic/sdk",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Suggestic node SDK",
   "main": "dist/index.js",
   "license": "SEE LICENSE IN LICENSE",
